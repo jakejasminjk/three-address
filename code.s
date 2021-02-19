@@ -14,12 +14,12 @@ s db "i is %d\n", 0
 section .text
 main:
 L5:
-mov rax, [i,]
-mov rax, [1]
-jz, L7,
+mov rax, [i]
+cmp rax, [max]
+jge L9
 L6:
-mov rdi, [s,]
-mov rsi, [i,]
+mov rdi, [s]
+mov rsi, [i]
 mov rdx, [0]
 call printf
 L7:

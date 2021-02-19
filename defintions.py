@@ -22,7 +22,7 @@ def writeDef(line):
             file.write(text)
          
 def writeCode(line, label):
-    prop = line.split()
+    prop = line.replace(',','').split()
     with open('code.s', 'a') as f:
         if(prop[0] == "MOV"):
             labelText = "L{n}:\n".format(n = label)
