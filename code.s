@@ -7,12 +7,13 @@ extern sleep
 section .data
 i dq 0
 max dq 20
-s db "i is %d\n", 0
+s db ‘i is %d\n’, 0
 
 
 
 section .text
 main:
+sub rsp, 0x28
 L5:
 mov rax, [i]
 cmp rax, [max]
