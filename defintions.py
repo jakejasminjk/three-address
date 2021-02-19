@@ -108,7 +108,7 @@ def writeCode(line, label):
             f.write(text)
             text = "mov rdx, [{val}]\n".format( val = prop[3])
             f.write(text)
-            text = "call printf"
+            text = "call printf\n"
             f.write(text)
             
         elif(prop[0] == "SLEEP"):
@@ -116,7 +116,7 @@ def writeCode(line, label):
             f.write(labelText)
             text = "mov rdi, [{val}]\n".format( val = prop[1])
             f.write(text)
-            text = "call sleep"
+            text = "call sleep\n"
             f.write(text)
 
 

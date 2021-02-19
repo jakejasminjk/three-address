@@ -19,7 +19,8 @@ mov rsi, [i,]
 mov rdx, [0]
 call printfL7
 mov rax, [i]
-inc raxmov [i], rax
+inc rax
+mov [i], rax
 L8
 jmp L4
 End with
