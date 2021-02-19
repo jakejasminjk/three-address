@@ -21,20 +21,20 @@ def writeCode(line, label):
     prop = line.split()
     with open('code.asm', 'a') as f:
         if(prop[0] == "MOV"):
-            labelText = "L{n}\n".format(n = label)
+            labelText = "L{n}:\n".format(n = label)
             f.write(labelText)
             text = "mov rax, [{val}]\n".format( val = prop[1])
             f.write(text)
             text = "mov [{val}], rax\n".format( val = prop[2])
             
         elif(prop[0] == "GOTO"):
-            labelText = "L{n}\n".format(n = label)
+            labelText = "L{n}:\n".format(n = label)
             f.write(labelText)
             text = "jmp L{val}\n".format( val = prop[1])
             f.write(text)
             
         elif(prop[0] == "JUMP"):
-            labelText = "L{n}\n".format(n = label)
+            labelText = "L{n}:\n".format(n = label)
             f.write(labelText)
             text = "mov rax, [{val}]\n".format( val = prop[3])
             f.write(text)
@@ -44,7 +44,7 @@ def writeCode(line, label):
             f.write(text)
             
         elif(prop[0] == "MASK"):
-            labelText = "L{n}\n".format(n = label)
+            labelText = "L{n}:\n".format(n = label)
             f.write(labelText)
             text = "mov rax, [{val}]\n".format( val = prop[3])
             f.write(text)
@@ -52,8 +52,9 @@ def writeCode(line, label):
             f.write(text)
             text = "j{val} L{dest}\n".format( val = prop[1], dest = prop[2])
             f.write(text)
+            
         elif(prop[0] == "INC"):
-            labelText = "L{n}\n".format(n = label)
+            labelText = "L{n}:\n".format(n = label)
             f.write(labelText)
             text = "mov rax, [{val}]\n".format( val = prop[1])
             f.write(text)
@@ -63,7 +64,7 @@ def writeCode(line, label):
             f.write(text)
             
         elif(prop[0] == "DEC"):
-            labelText = "L{n}\n".format(n = label)
+            labelText = "L{n}:\n".format(n = label)
             f.write(labelText)
             text = "mov rax, [{val}]\n".format( val = prop[1])
             f.write(text)
@@ -72,7 +73,7 @@ def writeCode(line, label):
             text = "mov [{val}], rax\n".format( val = prop[1])
             
         elif(prop[0] == "ADD"):
-            labelText = "L{n}\n".format(n = label)
+            labelText = "L{n}:\n".format(n = label)
             f.write(labelText)
             text = "mov rax, [{val}]\n".format( val = prop[1])
             f.write(text)
@@ -81,7 +82,7 @@ def writeCode(line, label):
             text = "mov [{val}], rax\n".format( val = prop[3])
             
         elif(prop[0] == "SUB"):
-            labelText = "L{n}\n".format(n = label)
+            labelText = "L{n}:\n".format(n = label)
             f.write(labelText)
             text = "mov rax, [{val}]\n".format( val = prop[1])
             f.write(text)
@@ -90,7 +91,7 @@ def writeCode(line, label):
             text = "mov [{val}], rax\n".format( val = prop[3])
             
         elif(prop[0] == "NEG"):
-            labelText = "L{n}\n".format(n = label)
+            labelText = "L{n}:\n".format(n = label)
             f.write(labelText)
             text = "mov rax, [{val}]\n".format( val = prop[1])
             f.write(text)
@@ -100,7 +101,7 @@ def writeCode(line, label):
             f.write(text)
             
         elif(prop[0] == "PRINT"):
-            labelText = "L{n}\n".format(n = label)
+            labelText = "L{n}:\n".format(n = label)
             f.write(labelText)
             text = "mov rdi, [{val}]\n".format( val = prop[1])
             f.write(text)
@@ -112,7 +113,7 @@ def writeCode(line, label):
             f.write(text)
             
         elif(prop[0] == "SLEEP"):
-            labelText = "L{n}\n".format(n = label)
+            labelText = "L{n}:\n".format(n = label)
             f.write(labelText)
             text = "mov rdi, [{val}]\n".format( val = prop[1])
             f.write(text)
@@ -138,7 +139,7 @@ with open("newCode.txt", 'r') as fp:
 
 
 with open('code.asm', 'a') as f:
-    labelText = "End with\n"
+    labelText = "End with:\n"
     f.write(labelText)
     text = "add rsp 0x28"
     f.write(text)

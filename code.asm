@@ -17,7 +17,8 @@ L6
 mov rdi, [s,]
 mov rsi, [i,]
 mov rdx, [0]
-call printfL7
+call printf
+L7
 mov rax, [i]
 inc rax
 mov [i], rax
