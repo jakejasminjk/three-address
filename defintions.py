@@ -159,8 +159,8 @@ with open("newCode.txt", 'r') as fp:
                     text = "sub rsp, 0x28\n"
                     f.write(text)
                     secC = secC+1
-            else:
-                print(line)
-                writeCode(line, count)
+           
+            print(line)
+            writeCode(line, count)
 
 
