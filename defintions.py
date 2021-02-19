@@ -1,8 +1,12 @@
-with open('code.asm', 'w') as file: 
-        file.write('global main\n')
-        file.write('extern printf\n')
-        file.write('extern sleep\n')
-        file.write('section .data\n')
+with open('code.asm', 'w') as f: 
+        f.write('global main\n')
+        f.write('extern printf\n')
+        f.write('extern sleep\n')
+        n = 3
+        while(n > 0):
+            f.write('\n')
+            n=n-1
+        f.write('section .data\n')
 
 def writeDef(line):
     prop = line.split()
@@ -126,6 +130,7 @@ def writeCode(line, label):
 
 
 count = 0
+secC = 0
 
 with open("newCode.txt", 'r') as fp:
     for line in fp:
@@ -134,14 +139,27 @@ with open("newCode.txt", 'r') as fp:
         if(deck[0] == "INT" or deck[0] == "FLOAT" or deck[0] == "CHAR"):
             writeDef(line)
         else:
-            print(line)
-            writeCode(line, count)
+            if(secC == 0):
+                with open('code.asm', 'a') as f:
+                    i = 3
+                    while(i > 0):
+                        f.write('\n')
+                        i = i - 1
+                    labelText = "section .text\n"
+                    f.write(labelText)
+                    text = "main:\n"
+                    f.write(text)
+                    text = "sub rsp, 0x28\n"
+                    secC = secC+1
+            else:
+                print(line)
+                writeCode(line, count)
 
 
 with open('code.asm', 'a') as f:
     labelText = "End with:\n"
     f.write(labelText)
-    text = "add rsp 0x28"
+    text = "add rsp 0x28\n"
     f.write(text)
-    text = "ret"
+    text = "ret\n"
     f.write(text)
