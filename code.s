@@ -15,8 +15,8 @@ section .text
 main:
 L5:
 mov rax, [i]
-cmp rax, [max]
-jge L9
+mov rax, [1]
+jz L7
 L6:
 mov rdi, [s]
 mov rsi, [i]
@@ -29,5 +29,5 @@ mov [i], rax
 L8:
 jmp L4
 End with:
-add rsp 0x28
+add rsp, 0x28
 ret

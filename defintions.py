@@ -123,6 +123,13 @@ def writeCode(line, label):
             f.write(text)
             text = "call sleep\n"
             f.write(text)
+        elif(prop[0] == "END"):
+            labelText = "End with:\n".format(n = label)
+            f.write(labelText)
+            text = "add rsp, 0x28\n"
+            f.write(text)
+            text = "ret\n"
+            f.write(text)
 
 
 
@@ -156,10 +163,4 @@ with open("newCode.txt", 'r') as fp:
                 writeCode(line, count)
 
 
-with open('code.s', 'a') as f:
-    labelText = "End with:\n"
-    f.write(labelText)
-    text = "add rsp 0x28\n"
-    f.write(text)
-    text = "ret\n"
-    f.write(text)
+
