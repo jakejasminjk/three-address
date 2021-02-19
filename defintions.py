@@ -57,7 +57,7 @@ def writeCode(line, label):
             f.write(labelText)
             text = "mov rax, [{val}]\n".format( val = prop[1])
             f.write(text)
-            text = "inc rax"
+            text = "inc rax\n"
             f.write(text)
             text = "mov [{val}], rax\n".format( val = prop[1])
             f.write(text)
