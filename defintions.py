@@ -1,4 +1,4 @@
-with open('code.asm', 'w') as f: 
+with open('code.s', 'w') as f: 
         f.write('global main\n')
         f.write('extern printf\n')
         f.write('extern sleep\n')
@@ -10,7 +10,7 @@ with open('code.asm', 'w') as f:
 
 def writeDef(line):
     prop = line.split()
-    with open('code.asm', 'a') as file:
+    with open('code.s', 'a') as file:
         if(prop[0] == "INT"):
             text = "{int} dq {val}\n".format(int = prop[1], val = prop[2])
             file.write(text)
@@ -23,7 +23,7 @@ def writeDef(line):
          
 def writeCode(line, label):
     prop = line.split()
-    with open('code.asm', 'a') as f:
+    with open('code.s', 'a') as f:
         if(prop[0] == "MOV"):
             labelText = "L{n}:\n".format(n = label)
             f.write(labelText)
@@ -140,7 +140,7 @@ with open("newCode.txt", 'r') as fp:
             writeDef(line)
         else:
             if(secC == 0):
-                with open('code.asm', 'a') as f:
+                with open('code.s', 'a') as f:
                     i = 3
                     while(i > 0):
                         f.write('\n')
@@ -156,7 +156,7 @@ with open("newCode.txt", 'r') as fp:
                 writeCode(line, count)
 
 
-with open('code.asm', 'a') as f:
+with open('code.s', 'a') as f:
     labelText = "End with:\n"
     f.write(labelText)
     text = "add rsp 0x28\n"
