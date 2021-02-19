@@ -1,0 +1,6 @@
+INT i 0
+INT j 0
+INT k 1
+FLOAT x 2.1
+FLOAT y 3.1415
+CHAR s “result:”
