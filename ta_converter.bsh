@@ -1,0 +1,4 @@
+chmod u+x ./ta_converter.py
+./ta_converter.py newCode.txt -o asmcode.s
+nasm asmcode.s -felf64
+gcc -no-pie asmcode.o -o asmcode.out
