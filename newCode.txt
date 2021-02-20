@@ -1,6 +1,6 @@
 INT i 0
 INT max 20
-CHAR s ‘i is %d\n’
+CHAR s "i is %d\n"
 MASK z, 7, i, 1
 JUMP ge, 9, i, max
 PRINT s, i, 0
