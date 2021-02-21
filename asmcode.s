@@ -10,16 +10,16 @@ main:
 	sub rsp, 0x28
 	L4:
 	mov rax, [i]
-	test rax, [1]
+	test rax, 1
 	jz L7
 	L5:
 	mov rax, [i]
 	cmp rax, [max]
 	jge L9
 	L6:
-	mov rdi, [s]
+	mov rdi, s
 	mov rsi, [i]
-	mov rdx, [0]
+	mov rdx, 0
 	call printf
 	L7:
 	mov rax, [i]
